@@ -3,6 +3,7 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
+const cors = require('cors');
 const express = require('express');
 const axios = require('axios');
 const querystring = require('querystring');
@@ -10,6 +11,11 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = 8888;
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 
 const generateRandomString = length => {
   let text = '';
@@ -72,7 +78,7 @@ app.get('/callback', (req, res) => {
       const expires_in = response.data.expires_in;
       const refresh_token = response.data.refresh_token;
       res.cookie('access_token', access_token, { httpOnly: true, maxAge: expires_in * 1000 });
-      res.redirect('/profile');
+      res.redirect('/');
     })
     .catch(error => {
       console.error('Error:', error);
@@ -91,7 +97,7 @@ app.get('/profile', (req, res) => {
     },
   })
     .then(response => {
-      res.send(response.data);
+      res.json(response.data);
     })
     .catch(error => {
       console.error('Error:', error);
@@ -103,11 +109,11 @@ app.get('/recommendations', (req, res) => {
   const access_token = req.cookies.access_token;
 
   const queryParams = {
-    limit: 10,
-    market: 'US',
-    seed_artists: '0LcJLqbBmaGUft1e9Mm8HV,3TVXtAsR1Inumwj472S9r4',
-    seed_genres: 'pop',
-    seed_tracks: '0c6xIDDpzE81m2q797ordA'
+    limit: 20,
+    max_tempo: 140,
+    min_tempo: 120,
+    target_tempo: 130,
+    seed_genres: 'house',
   };
 
   axios({
@@ -126,7 +132,6 @@ app.get('/recommendations', (req, res) => {
     res.send(error);
   });
 });
-
 
 app.listen(port, () => {
   console.log(`Server hosted on port:${port}`);
