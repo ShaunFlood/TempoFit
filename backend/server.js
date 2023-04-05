@@ -1,102 +1,133 @@
 require('dotenv').config();
-CLIENT_ID = process.env.CLIENT_ID;
-CLIENT_SECRET = process.env.CLIENT_SECRET;
-REDIRECT_URI = process.env.REDIRECT_URI
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
 
 const express = require('express');
 const axios = require('axios');
 const querystring = require('querystring');
-const app = express()
-const port = 8888
+const cookieParser = require('cookie-parser');
+
+const app = express();
+const port = 8888;
 
 const generateRandomString = length => {
-    let text = '';
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (let i = 0; i < length; i++) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-  };
+  let text = '';
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  for (let i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
 
 const stateKey = 'spotify_auth_state';
 
+app.use(cookieParser());
+
 app.get('/', (req, res) => {
-    res.send('Hello world');
+  res.send('Hello world');
 });
 
 app.get('/login', (req, res) => {
-    const state = generateRandomString(16);
-    res.cookie(stateKey, state);
-    const scope = 'user-read-private user-read-email';
-    const queryParams = querystring.stringify({
-        client_id: CLIENT_ID, //what app is being used by spotify
-        response_type: 'code', 
-        redirect_uri: REDIRECT_URI, //where we get redirected 
-        state: state, //state adds security to the backend.
-        scope: scope, //scopes gives us access to what we can use from the user.
-    }); //formats all the query in to a string, so it's smaller.
-    res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
+  const state = generateRandomString(16);
+  res.cookie(stateKey, state);
+  const scope = 'user-read-private user-read-email';
+  const queryParams = querystring.stringify({
+    client_id: CLIENT_ID,
+    response_type: 'code',
+    redirect_uri: REDIRECT_URI,
+    state: state,
+    scope: scope,
   });
+  res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
+});
 
-  app.get('/callback', (req, res) => {
-    const code = req.query.code || null;
-  
-    axios({
-      method: 'post',
-      url: 'https://accounts.spotify.com/api/token',
-      data: querystring.stringify({
-        grant_type: 'authorization_code',
-        code: code,
-        redirect_uri: REDIRECT_URI
-      }),
+app.get('/callback', (req, res) => {
+  const code = req.query.code || null;
+  const state = req.query.state || null;
+  const storedState = req.cookies ? req.cookies[stateKey] : null;
+
+  if (state === null || state !== storedState) {
+    res.status(401).send('State mismatch error');
+    return;
+  }
+
+  res.clearCookie(stateKey);
+
+  const params = new URLSearchParams();
+  params.append('grant_type', 'authorization_code');
+  params.append('code', code);
+  params.append('redirect_uri', REDIRECT_URI);
+  params.append('client_id', CLIENT_ID);
+  params.append('client_secret', CLIENT_SECRET);
+
+  axios
+    .post('https://accounts.spotify.com/api/token', params, {
       headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
-      .then(response => {
-        if (response.status === 200) {
-          const { access_token, refresh_token, expires_in } = response.data;
-  
-          const queryParams = querystring.stringify({
-            access_token,
-            refresh_token,
-          });
-  
-          res.redirect(`http://localhost:3000/?${queryParams}`);
-  
-        } else {
-          res.redirect(`/?${querystring.stringify({ error: 'invalid_token' })}`);
-        }
-      })
-      .catch(error => {
-        res.send(error);
-      });
-  });
-
-app.get('/refresh_token', (req, res) => {
-    const { refresh_token } = req.query;
-    
-    axios({
-      method: 'post',
-      url: 'https://accounts.spotify.com/api/token',
-      data: querystring.stringify({
-        grant_type: 'refresh_token',
-        refresh_token: refresh_token
-      }),
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
-      },
+    .then(response => {
+      const access_token = response.data.access_token;
+      const expires_in = response.data.expires_in;
+      const refresh_token = response.data.refresh_token;
+      res.cookie('access_token', access_token, { httpOnly: true, maxAge: expires_in * 1000 });
+      res.redirect('/profile');
     })
-      .then(response => {
-        res.send(response.data);
-      })
-      .catch(error => {
-        res.send(error);
-      });
+    .catch(error => {
+      console.error('Error:', error);
+      res.send(error);
+    });
+});
+
+app.get('/profile', (req, res) => {
+  const access_token = req.cookies.access_token;
+
+  axios({
+    method: 'get',
+    url: 'https://api.spotify.com/v1/me',
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  })
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      res.send(error);
+    });
+});
+
+app.get('/recommendations', (req, res) => {
+  const access_token = req.cookies.access_token;
+
+  const queryParams = {
+    limit: 10,
+    market: 'US',
+    seed_artists: '0LcJLqbBmaGUft1e9Mm8HV,3TVXtAsR1Inumwj472S9r4',
+    seed_genres: 'pop',
+    seed_tracks: '0c6xIDDpzE81m2q797ordA'
+  };
+
+  axios({
+    method: 'get',
+    url: 'https://api.spotify.com/v1/recommendations',
+    params: queryParams,
+    headers: {
+      Authorization: `Bearer ${access_token}`
+    }
+  })
+  .then(response => {
+    res.send(response.data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    res.send(error);
   });
+});
+
 
 app.listen(port, () => {
-    console.log(`Server hosted on port:${port}`);
+  console.log(`Server hosted on port:${port}`);
 });
