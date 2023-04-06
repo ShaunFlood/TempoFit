@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
-  const scope = 'user-read-private user-read-email';
+  const scope = 'user-read-private user-read-email playlist-read-private';
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
     response_type: 'code',
@@ -78,7 +78,7 @@ app.get('/callback', (req, res) => {
       const expires_in = response.data.expires_in;
       const refresh_token = response.data.refresh_token;
       res.cookie('access_token', access_token, { httpOnly: true, maxAge: expires_in * 1000 });
-      res.redirect('/');
+      res.redirect('http://localhost:3000/profile');
     })
     .catch(error => {
       console.error('Error:', error);
@@ -105,15 +105,33 @@ app.get('/profile', (req, res) => {
     });
 });
 
-app.get('/recommendations', (req, res) => {
+app.get('/playlist', (req, res) => {
   const access_token = req.cookies.access_token;
 
+  axios({
+    method: 'get',
+    url: 'https://api.spotify.com/v1/me/playlists',
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  })
+    .then(response => {
+      res.json(response.data);
+    })
+    .catch(error => {
+      console.error('Error', error);
+      res.send(error)
+    });
+})
+
+app.get('/recommendations', (req, res) => {
+  const access_token = req.cookies.access_token;
   const queryParams = {
     limit: 20,
     max_tempo: 140,
     min_tempo: 120,
     target_tempo: 130,
-    seed_genres: 'house',
+    seed_genres: 'indie', 
   };
 
   axios({
@@ -131,6 +149,11 @@ app.get('/recommendations', (req, res) => {
     console.error('Error:', error);
     res.send(error);
   });
+});
+
+app.get('/logout', (req, res) => {
+  res.clearCookie('access_token');
+  res.redirect('http://localhost:3000/');
 });
 
 app.listen(port, () => {

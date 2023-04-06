@@ -20,10 +20,14 @@ const Profile = () => {
   if (!profileData) {
     return <div>Loading...</div>;
   }
-
   return (
     <div>
-      <h1>{profileData.display_name}'s Profile</h1>
+      <button onClick={() => window.location.href = 'http://localhost:8888/logout'}>
+        Log out
+      </button>
+      <h1>{profileData.display_name}</h1>
+      <p>Followers: {profileData.followers.total}</p>
+      <img src={profileData.images[0]}></img>
     </div>
   );
 };
