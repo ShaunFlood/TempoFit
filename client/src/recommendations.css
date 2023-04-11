@@ -1,0 +1,37 @@
+img {
+    width: 30px;
+    height: px;
+    border-radius: 10px;
+}
+
+th {
+    background-color: #00adb5;
+}
+
+table {
+    border: 1px;
+    margin: auto;
+    width: 95%;
+    height: 95%;
+    font-size: 12px;
+    color: white;
+    background-image: linear-gradient(to bottom, #474b4F, #222629);
+}
+tbody {
+    margin-top: 20px;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    background-color: black;
+}
+
+
+/* colours
+
+#282828
+#3500D3
+#240090
+#190061
+#0C0032 */

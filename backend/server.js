@@ -126,14 +126,8 @@ app.get('/playlist', (req, res) => {
 
 app.get('/recommendations', (req, res) => {
   const access_token = req.cookies.access_token;
-  const queryParams = {
-    limit: 20,
-    max_tempo: 140,
-    min_tempo: 120,
-    target_tempo: 130,
-    seed_genres: 'indie', 
-  };
-
+  const queryParams = req.query;
+  
   axios({
     method: 'get',
     url: 'https://api.spotify.com/v1/recommendations',

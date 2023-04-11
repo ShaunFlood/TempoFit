@@ -1,13 +1,15 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import { FaSpotify } from 'react-icons/fa';
+import './Login.css'
 
 function Login() {
   return (
-    <div>
-      <h1>Login</h1>
-      <button onClick={() => window.location.href = 'http://localhost:8888/login'}>
-        Login with Spotify
-      </button>
+    <div className="background">
+      <button onClick={() => window.location.href = 'http://localhost:8888/login'} className="btn btn-primary" style={{ backgroundColor: '#1db954', border: 'black'}}><FaSpotify /> Login with Spotify
+    </button>
     </div>
+    
   );
 }
 
