@@ -17,7 +17,7 @@
       event.preventDefault();
 
       const queryParams = {
-        limit,
+        limit: limit,
         target_tempo: targetTempo,
         seed_genres: seedGenres,
       };

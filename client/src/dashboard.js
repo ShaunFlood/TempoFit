@@ -1,6 +1,10 @@
 import Profile from "./profile";
 import './dashboard.css'
 import Recommendations from "./recommendations";
+import Energy from "./energy";
+import Popularity from "./popularity";
+import Genre from "./genre";
+import Tempo from "./tempo";
 
 const Dashboard = () => {
 return (
@@ -33,6 +37,10 @@ return (
         <h3 id='profile'>Spotify Stats</h3>
         <p>This is a fun little section about you're own listening habits on spotify wheiter it's your top five artists, tracks or just the most listened genre that you're currently into.</p>
         <Profile />
+        <Energy />
+        <Popularity />
+        <Genre />
+        <Tempo />
       </div>
     </div>
   );

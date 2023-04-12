@@ -22,16 +22,30 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div class='container'>
-      {/* <button onClick={() => window.location.href = 'http://localhost:8888/logout'}>
-        Log out
-      </button> */}
-      <h3>About you</h3>
-      <img src={profileData.images[0].url} class='profileimage'></img>
-      <h1 class='heading'>{profileData.display_name}</h1>
-      <p class='information'>Followers: {profileData.followers.total}</p>
-      <p class='information'>Product: {profileData.product}</p>
-    </div>
+    <div class="container">
+        <div class="row">
+          <div class="col mx-auto text-center">
+            <h1>Infographic</h1>
+            <div className="profile-container">
+              <img src={profileData.images[0].url} alt="Profile Image" className="profile-image" />
+              <div className="profile-info">
+              <p className='display-name'>{profileData.display_name} </p>
+              <p className='followers'>Followers: {profileData.followers.total}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Left Column</h2>
+            <p>This is the left column content of the second row.</p>
+          </div>
+          <div class="col-md-6">
+            <h2>Right Column</h2>
+            <p>This is the right column content of the second row.</p>
+          </div>
+        </div>
+      </div>
   );
 };
 

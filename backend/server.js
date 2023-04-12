@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
-  const scope = 'user-read-private user-read-email playlist-read-private';
+  const scope = 'user-read-private user-read-email playlist-read-private user-top-read';
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
     response_type: 'code',
@@ -114,6 +114,65 @@ app.get('/playlist', (req, res) => {
   axios({
     method: 'get',
     url: 'https://api.spotify.com/v1/me/playlists',
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  })
+    .then(response => {
+      res.json(response.data);
+    })
+    .catch(error => {
+      console.error('Error', error);
+      res.send(error)
+    });
+})
+
+app.get('/toptracks', async (req, res) => {
+  try {
+    const access_token = req.cookies.access_token;
+    const queryParams2 = {
+      time_range: 'short_term',
+      limit: 20,
+    };
+    const topTracksResponse = await axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me/top/tracks',
+      params: queryParams2,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+    const topTracks = topTracksResponse.data.items;
+    const trackIds = topTracks.map(track => track.id);
+  
+    const audioFeaturesPromises = trackIds.map(trackId => {
+      return axios({
+        method: 'get',
+        url: `https://api.spotify.com/v1/audio-features/${trackId}`,
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+    });
+    const audioFeaturesResponses = await Promise.all(audioFeaturesPromises);
+    const audioFeatures = audioFeaturesResponses.map(response => response.data);
+    res.json({ topTracks, audioFeatures });
+  } catch (error) {
+    console.error('Error', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/topartists', (req, res) => {
+  const access_token = req.cookies.access_token;
+  const queryParams = {
+    time_range: 'short_term',
+    limit: 30,
+  };
+  axios({
+    method: 'get',
+    url: 'https://api.spotify.com/v1/me/top/artists',
+    params: queryParams,
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
