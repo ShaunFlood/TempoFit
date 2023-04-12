@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import EnergyChart from './EnergyChart.js';
+import './energy.css'
 
 const Energy = () => {
     const [energyData, setEnergyData] = useState(null)
@@ -25,15 +27,20 @@ const Energy = () => {
 
     return(
         <div>
-            <h1>Energy Values</h1>
             {energyData ? (
-                <div>
-                    <p>
-                    {energyData.map((tracks) => tracks.energy).join(', ')}
-                     </p>
-                    <p>
-                    {average}
-                     </p>
+                <div className="energy-container">
+                    <div className="chart"> 
+                        <EnergyChart energyData={energyData} />
+                    </div>
+                    <div className="text">
+                    <h2 className="title">Energy</h2>
+                        <p>
+                        Energy is a measurement from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy.
+                        </p>
+                        <p>
+                        Your average energy level based on your top twenty tracks on spotify is {average}.
+                        </p>
+                    </div>
                 </div>
             ) : (
                 <p>Loading...</p>

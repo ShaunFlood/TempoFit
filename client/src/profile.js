@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './profile.css';
+import Energy from "./energy";
+import Popularity from './popularity';
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
@@ -39,10 +41,12 @@ const Profile = () => {
           <div class="col-md-6">
             <h2>Left Column</h2>
             <p>This is the left column content of the second row.</p>
+            <Energy />
           </div>
           <div class="col-md-6">
             <h2>Right Column</h2>
             <p>This is the right column content of the second row.</p>
+            <Popularity />
           </div>
         </div>
       </div>
