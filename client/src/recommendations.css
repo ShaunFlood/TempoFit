@@ -11,8 +11,8 @@ th {
 table {
     border: 1px;
     margin: auto;
-    width: 95%;
-    height: 95%;
+    width: 80%;
+    height: 80%;
     font-size: 12px;
     color: white;
     background-image: linear-gradient(to bottom, #474b4F, #222629);
@@ -21,13 +21,28 @@ tbody {
     margin-top: 20px;
 }
 
-h2 {
-    color: white;
-    text-align: center;
-    background-color: black;
-}
+input {
+    display:block;
+    width:30%;
+    height:10%;
+    margin:10px 0;
+    padding:10px;
+    align-items: center;
+  }
 
-
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    margin-bottom: 20px
+  }
+  
+  .type-1 {
+    width: 20%;
+    height: 10%;
+  }
 /* colours
 
 #282828

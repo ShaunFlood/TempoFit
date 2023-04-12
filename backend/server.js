@@ -97,7 +97,10 @@ app.get('/profile', (req, res) => {
     },
   })
     .then(response => {
-      res.json(response.data);
+      const profileData = response.data
+      const userId = profileData.uri.slice(13)
+      res.cookie('user_id', userId)
+      res.json(profileData)
     })
     .catch(error => {
       console.error('Error:', error);
@@ -127,7 +130,7 @@ app.get('/playlist', (req, res) => {
 app.get('/recommendations', (req, res) => {
   const access_token = req.cookies.access_token;
   const queryParams = req.query;
-  
+
   axios({
     method: 'get',
     url: 'https://api.spotify.com/v1/recommendations',

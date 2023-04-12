@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaSpotify } from 'react-icons/fa';
-import './Login.css'
 
 function Login() {
   return (
