@@ -1,37 +1,36 @@
 import React, { useEffect, useRef } from 'react';
 import { Chart } from 'chart.js/auto';
 
-const PopularityChart = ({ popularityData }) => {
+const TempoChart = ({ tempoData }) => {
     const chartRef = useRef(null); 
 
     useEffect(() => {
         const chart = new Chart(chartRef.current, {
-            type: 'line', 
+            type: 'scatter', 
             data: {
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
                 datasets: [{
-                    label: 'Popularity',
-                    data: popularityData.map((tracks) => tracks.popularity),
+                    label: 'Tempo compared to energy',
+                    data: tempoData.map((tracks) => ({ x: tracks.tempo, y: tracks.energy })),
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
                 }]
             },
             options: {
-                responsive: true, // Make the chart responsive
-                maintainAspectRatio: false, // Do not maintain aspect ratio
+                responsive: true,
+                maintainAspectRatio: false,
             }
         });
         return () => {
             chart.destroy();
         };
-    }, [popularityData]);
+    }, [tempoData]);
 
     return (
         <div style={{ height: '250px', width: '300px' }}>
-            <canvas ref={chartRef} id="popularityChart"></canvas>
+            <canvas ref={chartRef} id="tempoChart"></canvas>
         </div>
     );
 }
 
-export default PopularityChart;
+export default TempoChart;

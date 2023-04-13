@@ -185,6 +185,23 @@ app.get('/topartists', (req, res) => {
       res.send(error)
     });
 })
+app.get('/genres', (req, res) => {
+  const access_token = req.cookies.access_token
+
+  axios({
+    method: 'get',
+    url: 'https://api.spotify.com/v1/recommendations/available-genre-seeds',
+    headers: {
+      Authorization: `Bearer ${access_token}`
+    }
+  })
+  .then(response => {
+    res.send(response.data);
+  })
+  .catch(error => {
+    console.error(error)
+  });
+});
 
 app.get('/recommendations', (req, res) => {
   const access_token = req.cookies.access_token;

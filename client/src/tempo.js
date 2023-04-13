@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import TempoChart from './tempoChart';
 
 const Tempo = () => {
     const [tempoData, setTempoData] = useState(null)
@@ -20,7 +21,7 @@ const Tempo = () => {
     const tempoString = tempoData ? tempoData.map((tracks) => tracks.tempo).join(', ') : '';
     const tempoArray = tempoString.split(', ')
     const tempoNumArray = tempoArray.map(Number);
-    const sum = tempoNumArray.reduce((acc, val) => acc + val, 0); //setting acc to 0 then adding the val to it
+    const sum = tempoNumArray.reduce((acc, val) => acc + val, 0);
     const average = sum / tempoNumArray.length;
 
     return(
@@ -32,8 +33,12 @@ const Tempo = () => {
                     {tempoData.map((tracks) => tracks.tempo).join(', ')}
                 </p>
                 <p>
+                    {tempoData.map((tracks) => tracks.danceability).join(', ')}
+                </p>
+                <p>
                     {average}
                 </p>
+                <TempoChart tempoData={tempoData} />
                 </div>
             ) : (
                 <p>Loading...</p>
