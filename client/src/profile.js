@@ -3,6 +3,9 @@ import axios from 'axios';
 import './profile.css';
 import Energy from "./energy";
 import Popularity from './popularity';
+import Tempo from './tempo';
+import Genre from './genre';
+import { FaSpotify } from 'react-icons/fa';
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
@@ -26,27 +29,26 @@ const Profile = () => {
   return (
     <div class="container">
         <div class="row">
-          <div class="col mx-auto text-center">
-            <h1>Infographic</h1>
-            <div className="profile-container">
-              <img src={profileData.images[0].url} alt="Profile Image" className="profile-image" />
-              <div className="profile-info">
-              <p className='display-name'>{profileData.display_name} </p>
-              <p className='followers'>Followers: {profileData.followers.total}</p>
+          <div class="col text-center"> 
+            <h1>Spotify Statistics</h1>
+          </div>
+          <div class="col text-center"> 
+            <div class="profile-container">
+              <img src={profileData.images[0].url} alt="Profile Image" class="profile-image" />
+              <div class="profile-info">
+                <p class="display-name">{profileData.display_name}</p>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <h2>Left Column</h2>
-            <p>This is the left column content of the second row.</p>
             <Energy />
+            <Tempo />
           </div>
           <div class="col-md-6">
-            <h2>Right Column</h2>
-            <p>This is the right column content of the second row.</p>
             <Popularity />
+            <Genre />
           </div>
         </div>
       </div>

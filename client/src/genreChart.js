@@ -52,7 +52,7 @@ const GenrePieChart = ({ genreData }) => {
         position: 'left',
         align: 'end',
         labels: {
-        padding: 5,
+        padding: 5
         }
         }
         }

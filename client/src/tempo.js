@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TempoChart from './tempoChart';
+import './tempo.css'
 
 const Tempo = () => {
     const [tempoData, setTempoData] = useState(null)
@@ -26,19 +27,17 @@ const Tempo = () => {
 
     return(
         <div>
-            <h1>Tempo Values</h1>
             {tempoData ? (
-                <div>
-                <p>
-                    {tempoData.map((tracks) => tracks.tempo).join(', ')}
-                </p>
-                <p>
-                    {tempoData.map((tracks) => tracks.danceability).join(', ')}
-                </p>
-                <p>
-                    {average}
-                </p>
-                <TempoChart tempoData={tempoData} />
+                <div className="tempo-container">
+                    <div className="chart">
+                        <TempoChart tempoData={tempoData} />
+                    </div>
+                        <div className="text">
+                            <h2 className="title">Tempo</h2>
+                            <p>
+                            Information  {average}
+                            </p>
+                        </div>
                 </div>
             ) : (
                 <p>Loading...</p>

@@ -1,7 +1,7 @@
-.popularity-container {
-    display: grid; /* Use grid display */
-    grid-template-columns: 1fr 1fr; /* Define two equal columns */
-    grid-gap: 5px; /* Add gap between columns */
+.tempo-container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 5px;
     height: 300px;
     align-items: center;
     background-color: beige;
