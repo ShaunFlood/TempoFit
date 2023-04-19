@@ -95,7 +95,6 @@ input {
     border: white;
     border-radius: 1px;
     margin-top: 50px;
-    margin-bottom: 50px;
   }
   
   form {
@@ -109,3 +108,6 @@ input {
   margin-left: 150px;
 }
   
+.container {
+  
+}

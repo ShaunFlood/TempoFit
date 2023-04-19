@@ -1,6 +1,7 @@
   import React, { useState } from 'react';
   import axios from 'axios';
   import './recommendations.css'
+  import { Button, Collapse } from 'react-bootstrap';
 
   function Recommendations() {
     const [limit, setLimit] = useState(null);
@@ -8,6 +9,7 @@
     const [seedGenres, setSeedGenres] = useState(null);
     const [response, setResponse] = useState(null);
     const [trackUris, setTrackUris] = useState([]);
+    const [open, setOpen] = useState(false);
 
     function formatDuration(duration_ms) {
       const minutes = Math.floor(duration_ms / 60000);
@@ -79,9 +81,19 @@
           <label htmlFor="seed-genres-input">Music genre</label>
           <input type="text" id="seed-genres-input" class='type-1' value={seedGenres} onChange={event => setSeedGenres(event.target.value)} placeholder='house,hip-hop,pop'/>
 
-          <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#1db954', border: 'black'}}>Generate</button>
+          <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#1db954', border: 'black', marginBottom: '10px'}}>Generate</button>
 
+          <div className="button-wrapper">
+                  <Button variant="info" onClick={() => setOpen(!open)}>Show Genres</Button>
+                  <Collapse in={open}>
+                    <div>
+                      all the fucking genres here
+                    </div>
+                  </Collapse>
+                </div>  
         </form>
+
+        
         {response && (
             <table>
               <thead>
@@ -107,8 +119,9 @@
                   <button type="button" className="btn btn-primary" style={{ backgroundColor: '#1db954', border: 'black', height: '50px', width: '100px'}} onClick={handleSave}>Save</button>
               </table>
         )}
-          
+       
         </div>  
+        
       </div>
     );
   }
