@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
-  const scope = 'user-read-private user-read-email playlist-read-private user-top-read';
+  const scope = 'user-read-private user-read-email playlist-read-private user-top-read playlist-modify-public playlist-modify-private';
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
     response_type: 'code',
@@ -223,6 +223,53 @@ app.get('/recommendations', (req, res) => {
     res.send(error);
   });
 });
+
+app.get('/create', (req, res) => {
+  const access_token = req.cookies.access_token;
+  const user = req.cookies.user_id;
+
+  axios({
+    method: 'post',
+    url: `https://api.spotify.com/v1/users/${user}/playlists`,
+    data: {
+      name: `TempoFit ${Date.now()}`,
+    },
+    headers: {
+      Authorization: `Bearer ${access_token}`
+    }
+    })
+  .then(response => {
+    const playlistId = response.data.id;
+    res.cookie('playlistId', playlistId, { maxAge: 900000, httpOnly: true });
+    res.send(response.data);    
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    res.send(error);
+  });
+})
+
+app.get('/save', (req, res) => {
+  const access_token = req.cookies.access_token;
+  const playlistId = req.cookies.playlistId;
+  const trackUris = req.query.uris;
+
+  axios({
+    method: 'post',
+    url: `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+    data: { uris: trackUris },
+    headers: {
+      Authorization: `Bearer ${access_token}`
+    },
+  })
+  .then(response => {
+    res.send(response.data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    res.send(error);
+  });
+})
 
 app.get('/logout', (req, res) => {
   res.clearCookie('access_token');

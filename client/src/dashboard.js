@@ -1,10 +1,7 @@
 import Profile from "./profile";
 import './dashboard.css'
 import Recommendations from "./recommendations";
-import Genre from "./genre";
-import Tempo from "./tempo";
 import { useEffect } from "react";
-
 
 
 const Dashboard = () => {
