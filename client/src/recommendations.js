@@ -104,9 +104,10 @@
                               </tr>
                               ))}
                   </tbody>
+                  <button type="button" className="btn btn-primary" style={{ backgroundColor: '#1db954', border: 'black', height: '50px', width: '100px'}} onClick={handleSave}>Save</button>
               </table>
         )}
-          <button type="button" className="btn btn-primary" style={{ backgroundColor: '#1db954', border: 'black'}} onClick={handleSave}>Save to Playlist</button>
+          
         </div>  
       </div>
     );
