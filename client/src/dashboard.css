@@ -7,11 +7,17 @@
     top: 0;
     z-index: 100;
   }
-  h3 {
+  h1 {
     text-align: center;
     font-size: 52px;
     background-color: #7bc2ba;
     color: white;
+  }
+  h3 {
+    text-align: center;
+    font-size: 32px;
+
+    color: #7bc2ba;
   }
   .hero {
     background-image: url('bodybuilder-925770_960_720.jpg');
@@ -50,9 +56,10 @@
     border-radius: 5px;
   }
 
-  .how-to {
-    width: 100%; 
-    height: auto;
+ 
+  .intro{
+    background-image: white;
+    border: #474b4F solid 1px;
   }
 
   .block {
@@ -127,10 +134,10 @@
   }
   .big-block {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr); /* Add this line to set even row heights */
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr); /* Add this line to set even row heights */
     background-color: white;
-    height: 1000px;
+    height: 800px;
   }
 
   h4{
@@ -158,4 +165,27 @@
     display: none;
     overflow: hidden;
     background-color: black;
+  }
+  p{
+    color: black;
+    text-align: center;
+  }
+
+  .gettingstarted {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .text-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .howto {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
   }

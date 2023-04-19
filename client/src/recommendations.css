@@ -23,6 +23,18 @@ tbody {
     margin-top: 20px;
 }
 
+.form-headings{
+    text-align: center;
+    font-size: 52px;
+    background-color: #7bc2ba;
+    color: white;
+}
+.howto{
+  justify-content: center;
+  display: block;
+  align-items: center;
+}
+
 input {
     display:block;
     width:30%;
