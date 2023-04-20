@@ -7,7 +7,7 @@
     top: 0;
     z-index: 100;
   }
-  h1 {
+  .h1 {
     text-align: center;
     font-size: 52px;
     background-color: #7bc2ba;
@@ -44,6 +44,7 @@
   .hero-subtitle {
     font-size: 24px;
     margin-bottom: 40px;
+    color: white;
   }
 
   .hero-cta {
@@ -102,7 +103,7 @@
   }
 
   .genre-container {
-    max-height: 300px; /* Set the desired height for the container */
+    max-height: 300px; 
     overflow-y: auto;
     width: 300px; 
     margin-top: 50px;
@@ -173,4 +174,9 @@
     max-width: 100%;
     height: auto;
     margin: auto;
+
+  }
+
+  video{
+
   }

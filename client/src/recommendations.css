@@ -3,10 +3,24 @@
     height: px;
     border-radius: 10px;
 }
+.type-1{
+
+}
 
 th {
     background-color: #00adb5;
 }
+.collapse-text{
+  color: white;
+  font-size: 12px;
+  background-color: #80CBC4;
+  margin-top: 10px;
+  margin-right: 50px;
+  border-color: white;
+  border-radius: 5px;
+
+}
+
 
 table {
     border: 1px;
@@ -54,8 +68,8 @@ input {
   }
   
   .type-1 {
-    width: 20%;
-    height: 10%;
+    width: 200px;
+    height: 50px;
   }
 
   .generate-description {
@@ -68,14 +82,12 @@ input {
     font-size: 16px;
     font-family: Arial, sans-serif;
     color: #333;
-    /* Add any other styles you want */
   }
   
   label {
     font-size: 14px;
     font-family: Arial, sans-serif;
     color: #777;
-    /* Add any other styles you want */
   }
 
   .btn {
@@ -109,5 +121,5 @@ input {
 }
   
 .container {
-  
+
 }
