@@ -56,13 +56,14 @@
     text-decoration: none;
     border-radius: 5px;
   }
-
  
   .intro{
-    background-image: white;
+    background-color: #f2f2f2;
     border: #474b4F solid 1px;
   }
-
+  .firstpart{
+    margin-bottom: 50px ;
+  }
   .block {
     margin-top: 50px;
     text-align: center;
@@ -155,12 +156,14 @@
   p{
     color: black;
     text-align: center;
+    font-size: 22px;
   }
 
   .gettingstarted {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    margin-top: 18px;
   }
   
   .text-container {
@@ -176,7 +179,11 @@
     margin: auto;
 
   }
+.video-container {
+  margin-left: 50px;
+  width: 900px;
+}
 
-  video{
-
-  }
+video{
+  margin-left: 20px;
+}
