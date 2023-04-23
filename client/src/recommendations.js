@@ -92,45 +92,42 @@
                   </Collapse>
                 </div>  
         </form>
-
-        
-        {response && response.length > 0 && (
+          {response && response.tracks && response.tracks.length > 0 ? (
             <table>
               <thead>
-                  <tr>
-                      <th></th>
-                      <th>Title </th>
-                      <th>Album</th>
-                      <th>Artists</th>
-                      <th>Duration     </th>
-                  </tr>
-                  </thead>
+                <tr>
+                  <th></th>
+                  <th>Title </th>
+                  <th>Album</th>
+                  <th>Artists</th>
+                  <th>Duration     </th>
+                </tr>
+              </thead>
                   <tbody>
-                      {response.tracks.map(track => (
-                          <tr key={track.id}>
-                          <td><img src={track.album.images[0].url} class="album-img"/></td>
-                          <td>{track.name}</td>
-                          <td>{track.album.name}</td>
-                          <td>{track.artists.map(artist => artist.name).join(', ')}</td>
-                          <td>{formatDuration(track.duration_ms)}</td>
-                              </tr>
-                              ))}
+                    {response.tracks.map(track => (
+                      <tr key={track.id}>
+                        <td><img src={track.album.images[0].url} class="album-img"/></td>
+                        <td>{track.name}</td>
+                        <td>{track.album.name}</td>
+                        <td>{track.artists.map(artist => artist.name).join(', ')}</td>
+                        <td>{formatDuration(track.duration_ms)}</td>
+                      </tr>
+                    ))}
                   </tbody>
                   <td>
-
                   </td>
                   <td>
-                  <button type="button" className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px'}} onClick={handleSave}>Save</button>
+                    <button type="button" className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px'}} onClick={handleSave}>Save</button>
                   </td>
-                  <td>
-                  <button type="button" className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px', display: 'flex' }}>Statistics</button>
-                  </td>
-              </table>
-        )}
-       
-        </div>  
-        
+                </table>
+                  ) : (
+                    <div>
+                    </div>
+                )}
+        </div>
+        <button onClick={() => window.location.href = 'http://localhost:8888/logout'} className="btn btn-primary">Logout</button>
       </div>
+      
     );
   }
 
