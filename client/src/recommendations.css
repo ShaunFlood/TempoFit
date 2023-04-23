@@ -3,38 +3,45 @@
     height: px;
     border-radius: 10px;
 }
-.type-1{
-
-}
-
 th {
-    background-color: #00adb5;
+   position: sticky;
+  top: 0;
+  background-color: #00adb5;
+  z-index: 1;
 }
-.collapse-text{
+
+.collapse-text ul{
+  display: inline-block;
   color: white;
   font-size: 16px;
-  background-color: #80CBC4;
   margin-top: 10px;
   margin-right: 50px;
   border-color: white;
-  border-radius: 5px;
+  overflow-y: auto;
+  font-size: 20px;
+}
 
+.collapse-text li{
+  display: block;
+  width: auto;
 }
 
 
-table {
-    border: 1px;
-    margin: auto;
-    width: 52%;
-    height: 80%;
-    font-size: 12px;
-    color: white;
-    background-image: linear-gradient(to bottom, #474b4F, #222629);
-    margin-bottom: 100px;
-    margin-right: 50px;
+table{
+  display: block;
+  border: 1px;
+  margin: auto;
+  width: 52%;
+  font-size: 12px;
+  color: white;
+  background-image: linear-gradient(to bottom, #474b4F, #222629);
+  margin-right: 50px;
+  margin-bottom: 50px;
+  max-height: 650px;
+  overflow-y: scroll; 
 }
 tbody {
-    margin-top: 20px;
+  overflow-y: scroll; /* enable vertical scrolling */
 }
 
 .form-headings{
@@ -103,23 +110,44 @@ input {
   
   .form-wrapper {
     display: flex;
-    height: 900px;
     border: white;
     border-radius: 1px;
-    margin-top: 50px;
+    margin-top: 100px;
   }
   
   form {
   flex: 1;
-  width: 50%; /* Set width to 50% to make it the same size as generate-description */
-  align-items: flex-start; /* Change align-items to flex-start to align form to the left */
+  width: 50%; 
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 160px;
   margin-left: 150px;
 }
-  
-.container {
 
+.button-wrapper2 {
+  display: flex;
+  flex-direction: column;
+  margin-right: 150px;
+  margin-top: 160px;
+}
+.collapse-text.collapse.show{
+  max-height: 500px;
+}
+.button-wrapper1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapse-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: scroll;
+  max-height: 150px;
 }

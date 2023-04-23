@@ -67,6 +67,7 @@
   
 
     return (
+      
     <div className="form-cotanier">
       <div className="form-wrapper">
         <form onSubmit={handleSubmit}>
@@ -82,15 +83,8 @@
           <input type="text" id="seed-genres-input" class='type-1' value={seedGenres} onChange={event => setSeedGenres(event.target.value)} placeholder='house,hip-hop,pop'/>
 
           <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#7bc2ba', border: 'black', marginBottom: '10px', width: '140px'}}>Generate</button>
+         
 
-          <div className="button-wrapper">
-                  <Button variant="info" onClick={() => setOpen(!open)} style={{ backgroundColor: '#7bc2ba', width: '140px'}}>Show Genres</Button>
-                  <Collapse in={open}>
-                    <div className="collapse-text">
-                    acoustic, afrobeat, alt-rock, alternative, ambient, anime, black-metal, bluegrass, blues, bossanova, brazil, breakbeat, british, cantopop, chicago-house, children, chill, classical, club, comedy, country, dance, dancehall, death-metal, deep-house, detroit-techno, disco, disney, drum-and-bass, dub, dubstep, edm, electro, electronic, emo, folk, forro, french, funk, garage, german, gospel, goth, grindcore, groove, grunge, guitar, happy, hard-rock, hardcore, hardstyle, heavy-metal, hip-hop, holidays, honky-tonk, house, idm, indian, indie, indie-pop, industrial, iranian, j-dance, j-idol, j-pop, j-rock, jazz, k-pop, kids, latin, latino, malay, mandopop, metal, metal-misc, metalcore, minimal-techno, movies, mpb, new-age, new-release, opera, pagode, party, philippines-opm, piano, pop, pop-film, post-dubstep, power-pop, progressive-house, psych-rock, punk, punk-rock, r-n-b, rainy-day, reggae, reggaeton, road-trip, rock, rock-n-roll, rockabilly, romance, sad, salsa, samba, sertanejo, show-tunes, singer-songwriter, ska, sleep, songwriter, soul, soundtracks, spanish, study, summer, swedish, synth-pop, tango, techno, trance, trip-hop, turkish, work-out, world-music
-                    </div>
-                  </Collapse>
-                </div>  
         </form>
           {response && response.tracks && response.tracks.length > 0 ? (
             <table>
@@ -117,15 +111,154 @@
                   <td>
                   </td>
                   <td>
-                    <button type="button" className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px'}} onClick={handleSave}>Save</button>
                   </td>
                 </table>
                   ) : (
-                    <div>
+                      <div className="button-wrapper2">
+            <Button variant="info" onClick={() => setOpen(!open)} style={{ backgroundColor: '#7bc2ba', width: '300px'}}>Show Genres</Button>
+                <Collapse in={open}>
+                  <div className="collapse-text">
+                    <ul>
+                      <li>acoustic</li>
+                      <li>afrobeat</li>
+                      <li>alt-rock</li>
+                      <li>alternative</li>
+                      <li>ambient</li>
+                      <li>anime</li>
+                      <li>black-metal</li>
+                      <li>bluegrass</li>
+                      <li>blues</li>
+                      <li>bossanova</li>
+                      <li>brazil</li>
+                      <li>breakbeat</li>
+                      <li>british</li>
+                      <li>cantopop</li>
+                      <li>chicago-house</li>
+                      <li>children</li>
+                      <li>chill</li>
+                      <li>classical</li>
+                      <li>club</li>
+                      <li>comedy</li>
+                      <li>country</li>
+                      <li>dance</li>
+                      <li>dancehall</li>
+                      <li>death-metal</li>
+                      <li>deep-house</li>
+                      <li>detroit-techno</li>
+                      <li>disco</li>
+                      <li>disney</li>
+                      <li>drum-and-bass</li>
+                      <li>dub</li>
+                      <li>dubstep</li>
+                      <li>edm</li>
+                      <li>electro</li>
+                      <li>electronic</li>
+                      <li>emo</li>
+                      <li>folk</li>
+                      <li>forro</li>
+                      <li>french</li>
+                      <li>funk</li>
+                      <li>garage</li>
+                      <li>german</li>
+                      <li>gospel</li>
+                      <li>goth</li>
+                      <li>grindcore</li>
+                      <li>groove</li>
+                      <li>grunge</li>
+                      <li>guitar</li>
+                      <li>happy</li>
+                      <li>hard-rock</li>
+                      <li>hardcore</li>
+                      <li>hardstyle</li>
+                      <li>heavy-metal</li>
+                      <li>hip-hop</li>
+                      <li>holidays</li>
+                      <li>honky-tonk</li>
+                      <li>house</li>
+                      <li>idm</li>
+                      <li>indian</li>
+                      <li>indie</li>
+                      <li>indie-pop</li>
+                      <li>industrial</li>
+                      <li>iranian</li>
+                      <li>j-dance</li>
+                      <li>j-idol</li>
+                      <li>j-pop</li>
+                      <li>j-rock</li>
+                      <li>jazz</li>
+                      <li>k-pop</li>
+                      <li>kids</li>
+                      <li>latin</li>
+                      <li>latino</li>
+                      <li>malay</li>
+                      <li>mandopop</li>
+                      <li>metal</li>
+                      <li>metal-misc</li>
+                      <li>metalcore</li>
+                      <li>minimal-techno</li>
+                      <li>movies</li>
+                      <li>mpb</li>
+                      <li>new-age</li>
+                      <li>new-release</li>
+                      <li>opera</li>
+                      <li>pagode</li>
+                      <li>party</li>
+                      <li>philippines-opm</li>
+                      <li>piano</li>
+                      <li>pop</li>
+                      <li>pop-film</li>
+                      <li>post-dubstep</li>
+                      <li>power-pop</li>
+                      <li>progressive-house</li>
+                      <li>psych-rock</li>
+                      <li>punk</li>
+                      <li>punk-rock</li>
+                      <li>r-n-b</li>
+                      <li>rainy-day</li>
+                      <li>reggae</li>
+                      <li>reggaeton</li>
+                      <li>road-trip</li>
+                      <li>rock</li>
+                      <li>rock-n-roll</li>
+                      <li>rockabilly</li>
+                      <li>romance</li>
+                      <li>sad</li>
+                      <li>salsa</li>
+                      <li>samba</li>
+                      <li>sertanejo</li>
+                      <li>show-tunes</li>
+                      <li>singer-songwriter</li>
+                      <li>ska</li>
+                      <li>sleep</li>
+                      <li>songwriter</li>
+                      <li>soul</li>
+                      <li>soundtracks</li>
+                      <li>spanish</li>
+                      <li>study</li>
+                      <li>summer</li>
+                      <li>swedish</li>
+                      <li>synth-pop</li>
+                      <li>tango</li>
+                      <li>techno</li>
+                      <li>trance</li>
+                      <li>trip-hop</li>
+                      <li>turkish</li>
+                      <li>work-out</li>
+                      <li>world-music</li>
+                    </ul>
                     </div>
+                </Collapse>
+          </div>  
                 )}
         </div>
-        <button onClick={() => window.location.href = 'http://localhost:8888/logout'} className="btn btn-primary">Logout</button>
+        
+        
+
+          <div className="button-wrapper1">
+        <button type="button" className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px', alignItem: 'centre'}} onClick={handleSave}>Save</button>
+        <button onClick={() => window.location.href = 'http://localhost:8888/logout'} className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px', alignItem: 'centre', marginLeft: '10px'}}>Logout</button>
+        <br />
+        </div>
       </div>
       
     );
