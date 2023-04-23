@@ -1,0 +1,18 @@
+.tempo-container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 5px;
+    height: 300px;
+    align-items: center;
+    background-color: beige;
+    margin-bottom: 50px;
+  }
+.text{
+    height: 250px;
+    text-align: center;
+    font-size: 15px;
+}
+.chart{
+    height: 250px;
+}
+  

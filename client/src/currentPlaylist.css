@@ -1,0 +1,22 @@
+.playlist-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+  }
+  
+  .playlist {
+    text-align: center;
+  }
+  
+  .playlist img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    border: black;
+  }
+  
+  .playlist h2 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }

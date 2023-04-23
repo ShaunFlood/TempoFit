@@ -1,0 +1,189 @@
+  .body {
+    background-color: 000000;
+  }
+  .navbar-light {
+    background-color: #80CBC4;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .h1 {
+    text-align: center;
+    font-size: 52px;
+    background-color: #7bc2ba;
+    color: white;
+  }
+  h3 {
+    text-align: center;
+    font-size: 32px;
+
+    color: #7bc2ba;
+  }
+  .hero {
+    background-image: url('bodybuilder-925770_960_720.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid #474b4F;
+  }
+
+  .hero-content {
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .hero-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .hero-subtitle {
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: white;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff4500;
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+ 
+  .intro{
+    background-color: #f2f2f2;
+    border: #474b4F solid 1px;
+  }
+  .firstpart{
+    margin-bottom: 50px ;
+  }
+  .block {
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #474b4F;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .block3 {
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #474b4F;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .block4 {
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #474b4F;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .genre-container {
+    max-height: 300px; 
+    overflow-y: auto;
+    width: 300px; 
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #474b4F;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 50px;
+  }
+
+  .genre-header{
+    text-align: center;
+    font-size: 32px;
+    background-color: #7bc2ba;
+    width: 350px;
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+    margin-right: auto;
+    margin-left: 25px;
+  }
+
+  .genre-item {
+    font-size: 16px;
+    color: white;
+  }
+  .big-block {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr); /* Add this line to set even row heights */
+    background-color: white;
+    height: 800px;
+  }
+
+  h4{
+    color: white;
+  }
+
+  .content {
+    padding: 0 18px;
+    color: white;
+    display: none;
+    overflow: hidden;
+    background-color: black;
+  }
+  p{
+    color: black;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .gettingstarted {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 18px;
+  }
+  
+  .text-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .howto {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+
+  }
+.video-container {
+  margin-left: 50px;
+  width: 900px;
+}
+
+video{
+  margin-left: 20px;
+}
