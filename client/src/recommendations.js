@@ -94,7 +94,7 @@
         </form>
 
         
-        {response && (
+        {response && response.length > 0 && (
             <table>
               <thead>
                   <tr>
