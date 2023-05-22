@@ -42,6 +42,12 @@ tbody {
   overflow-y: scroll;
 }
 
+.form-container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-bottom: 20px;
+}
 .form-headings{
     text-align: center;
     font-size: 2em;
@@ -69,7 +75,7 @@ input {
     align-items: center;
     justify-content: center;
     height: 50%;
-    margin-bottom: 20px;  
+    margin-bottom: 50px;  
   }
   
   .type-1 {
@@ -113,6 +119,8 @@ input {
     border-radius: 1px;
     margin-top: 50px;
     background-color: #222629;
+    height: auto;
+    width: auto;
   }
   form {
   align-items: flex-start;
@@ -120,6 +128,7 @@ input {
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: #222629;
 }
 
 .button-wrapper2 {
@@ -127,7 +136,11 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+
+}
+.footer-container {
+  margin-top: auto;
 }
 .collapse-text.collapse.show{
   max-height: 500px;
@@ -138,6 +151,10 @@ input {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background-color: #222629;
+
+}
+.button-wrapper1-container{
   background-color: #222629;
 }
 

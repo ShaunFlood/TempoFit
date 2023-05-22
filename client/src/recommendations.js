@@ -67,7 +67,7 @@
   
 
     return (
-      
+  <div>
     <div className="form-container">
       <div className="form-wrapper">
         <form onSubmit={handleSubmit}>
@@ -250,14 +250,23 @@
           </div>  
                 )}
         </div>
-        
-          <div className="button-wrapper1">
-        <button type="button" className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px', alignItem: 'centre'}} onClick={handleSave}>Save</button>
-        <button onClick={() => window.location.href = 'http://localhost:8888/logout'} className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px', alignItem: 'centre', marginLeft: '10px'}}>Logout</button>
-        <br />
+          <div className="button-wrapper1-container">
+            <div className="button-wrapper1">
+            <button type="button" className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px', alignItem: 'centre'}} onClick={handleSave}>Save</button>
+            <button onClick={() => window.location.href = 'http://localhost:8888/logout'} className="btn btn-primary" style={{ backgroundColor: '#00adb5', border: 'black', height: '50px', width: '100px', alignItem: 'centre', marginLeft: '10px'}}>Logout</button>
+
+            </div>
+          </div>
+          <div className="footer-container">
+        <div className="footer">
+          <a href="https://github.com/ShaunFlood">Github: Shaun Flood</a>
+          <p>Powered by SpotifyAPI</p>
         </div>
       </div>
-     
+      </div>
+      
+      
+</div>
     );
   }
 
