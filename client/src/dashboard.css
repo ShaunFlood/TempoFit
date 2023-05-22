@@ -1,11 +1,6 @@
-  .body {
-    background-color: 000000;
-  }
-  .navbar-light {
-    background-color: #80CBC4;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+ .body {
+    background-color: 000000; 
+    width: 100%;
   }
   .h1 {
     text-align: center;
@@ -16,7 +11,6 @@
   h3 {
     text-align: center;
     font-size: 32px;
-
     color: #7bc2ba;
   }
   .hero {
@@ -24,6 +18,7 @@
     background-size: cover;
     background-position: center;
     height: 100vh;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +41,17 @@
     margin-bottom: 40px;
     color: white;
   }
-
+  .form-container {
+    height: 100vh;
+    margin-bottom: 200px;
+    background-color: #222629;
+  }
+  form{ 
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 100%;
+    width: 100%;
+  }
   .hero-cta {
     display: inline-block;
     padding: 15px 30px;
@@ -57,12 +62,7 @@
     border-radius: 5px;
   }
  
-  .intro{
-    background-color: #f2f2f2;
-    border: #474b4F solid 1px;
-  }
   .firstpart{
-    margin-bottom: 50px ;
   }
   .block {
     margin-top: 50px;
@@ -70,7 +70,6 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 800px;
     padding: 20px;
     background-color: #474b4F;
     border: 1px solid #ccc;
@@ -83,7 +82,6 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 800px;
     padding: 20px;
     background-color: #474b4F;
     border: 1px solid #ccc;
@@ -96,7 +94,6 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 800px;
     padding: 20px;
     background-color: #474b4F;
     border: 1px solid #ccc;
@@ -137,7 +134,7 @@
   .big-block {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr); /* Add this line to set even row heights */
+    grid-template-rows: repeat(1, 1fr); 
     background-color: white;
     height: 800px;
   }
@@ -158,18 +155,11 @@
     text-align: center;
     font-size: 22px;
   }
-
-  .gettingstarted {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 18px;
-  }
   
   .text-container {
-    max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 200px;
   }
   
   .howto {
@@ -177,13 +167,12 @@
     max-width: 100%;
     height: auto;
     margin: auto;
-
   }
-.video-container {
-  margin-left: 50px;
-  width: 900px;
-}
-
 video{
-  margin-left: 20px;
+  height: 47.5vh;
+  width: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }

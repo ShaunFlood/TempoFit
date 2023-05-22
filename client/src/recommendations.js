@@ -68,7 +68,7 @@
 
     return (
       
-    <div className="form-cotanier">
+    <div className="form-container">
       <div className="form-wrapper">
         <form onSubmit={handleSubmit}>
           <h3 className="form-headings">Set the tempo</h3>
@@ -81,7 +81,6 @@
           <h3 className="form-headings">Genres</h3>
           <label htmlFor="seed-genres-input"></label>
           <input type="text" id="seed-genres-input" class='type-1' value={seedGenres} onChange={event => setSeedGenres(event.target.value)} placeholder='house,hip-hop,pop'/>
-
           <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#7bc2ba', border: 'black', marginBottom: '10px', width: '140px'}}>Generate</button>
          
 

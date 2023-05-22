@@ -4,7 +4,7 @@
     border-radius: 10px;
 }
 th {
-   position: sticky;
+  position: sticky;
   top: 0;
   background-color: #00adb5;
   z-index: 1;
@@ -31,22 +31,20 @@ table{
   display: block;
   border: 1px;
   margin: auto;
-  width: 52%;
+  width: 60%;
   font-size: 12px;
   color: white;
   background-image: linear-gradient(to bottom, #474b4F, #222629);
-  margin-right: 50px;
-  margin-bottom: 50px;
-  max-height: 650px;
+  max-height: 400px;
   overflow-y: scroll; 
 }
 tbody {
-  overflow-y: scroll; /* enable vertical scrolling */
+  overflow-y: scroll;
 }
 
 .form-headings{
     text-align: center;
-    font-size: 52px;
+    font-size: 2em;
     background-color: #7bc2ba;
     color: white;
 }
@@ -71,7 +69,7 @@ input {
     align-items: center;
     justify-content: center;
     height: 50%;
-    margin-bottom: 20px
+    margin-bottom: 20px;  
   }
   
   .type-1 {
@@ -107,39 +105,40 @@ input {
     padding: 10px 20px;
     cursor: pointer;
   }
-  
   .form-wrapper {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     border: white;
     border-radius: 1px;
-    margin-top: 100px;
+    margin-top: 50px;
+    background-color: #222629;
   }
-  
   form {
-  flex: 1;
-  width: 50%; 
   align-items: flex-start;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: 160px;
-  margin-left: 150px;
 }
 
 .button-wrapper2 {
   display: flex;
   flex-direction: column;
-  margin-right: 150px;
-  margin-top: 160px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 .collapse-text.collapse.show{
   max-height: 500px;
+  max-width: 300px;
 }
 .button-wrapper1 {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background-color: #222629;
 }
 
 .collapse-text {
@@ -150,4 +149,5 @@ input {
   text-align: center;
   overflow: scroll;
   max-height: 150px;
+  flex-wrap: wrap;
 }
