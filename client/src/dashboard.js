@@ -1,5 +1,6 @@
 import './dashboard.css'
 import Recommendations from "./recommendations";
+import Footer from './footer';
 
 const Dashboard = () => {
   const videoPath = require('./starting.mp4')
@@ -27,20 +28,23 @@ return (
                     </video>
                   </div>
               </div>
-              <div className="gettingstarted">
+              <div>
                   <div className="text-container">
                       <a href="#form" class="hero-cta" style={{backgroundColor: "#00adb5"}}>Start Generating</a>
-                      <div className="form-container">
+                      <div>
                       <div id="form">
                         <Recommendations />
                         </div>
                       </div>
                   </div>
               </div>
+              <div>
+                <Footer />
+              </div>
             </div>
           </div>
         </div>
-      
+
 );
 
 }
