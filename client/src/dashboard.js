@@ -3,7 +3,7 @@ import Recommendations from "./recommendations";
 import Footer from './footer';
 
 const Dashboard = () => {
-  const videoPath = require('./starting.mp4')
+  const videoPath = require('./tempofitvideo.mp4')
   
 return (
       <div>
