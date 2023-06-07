@@ -33,3 +33,8 @@ https://github.com/ShaunFlood/TempoFit/assets/117595516/42379dc1-55c3-486f-b00a-
 3) cd /client and run npm install
 4) to start the build you just need to be in /client and type npm start 
 5) It'll appear on your default browser and you can expience the application for yourself
+
+
+### Upcoming changes
+
+I do actually want to deploy the website, which would be a bonus of the website actaully working. I do want to update this maybe with css or bootstrap changes, so the website can look a bit better as well.
