@@ -18,9 +18,11 @@
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
-  },
+  },  
   "scripts": {
-    "start": "react-scripts start",
+    "start-backend": "cd ../backend && npm start",
+    "start-client": "react-scripts start",
+    "start": "concurrently \"npm run start-backend\" \"npm run start-client\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -42,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.1.0"
   }
 }
